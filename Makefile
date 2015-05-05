@@ -1,14 +1,13 @@
-GXX	:= g++
-CFLAGS	:= -Wall -g -Werror -lpthread -O2 -fomit-frame-pointer
+GXX		:= g++
+CPPFLAGS	:= -Wall -g -Werror -lpthread -O2 -fomit-frame-pointer
 
-SOURCES	= $(wildcard *.cpp, chapter[0123456789]*/*.cpp)
-OBJECTS = $(patsubst %.cpp,%.o, $(SOURCES))
+SOURCES	= $(wildcard *.cpp, chapter[0-9]*/*.cpp)
+OBJECTS = $(patsubst %.cpp,%, $(SOURCES))
 
 all : $(OBJECTS)
-	$(GXX) $(CFLAGS) $^ -o $@
 
-%.o : %.cpp
-	$(GXX) $(CFLAGS) -c $^ -o $@
+% : %.cpp
+	$(GXX) $(CPPFLAGS) $^ -o $@
 
 .PHONY: clean
 clean:
