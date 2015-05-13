@@ -7,7 +7,7 @@ OBJECTS = $(patsubst %.cpp,%, $(SOURCES))
 all : $(OBJECTS)
 
 % : %.cpp
-	$(GXX) $(CPPFLAGS) $^ -o $@
+	$(GXX) $(CPPFLAGS) -std=c++11 $^ -o $@
 
 .PHONY: clean
 clean:
